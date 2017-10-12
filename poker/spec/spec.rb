@@ -38,4 +38,15 @@ RSpec.describe Deck do
       expect(deck2.deck).to_not eq(deck.shuffle)
     end
   end
+
+  describe "#deal" do
+    let(:player1) { double("player1", hand: []) }
+    let(:player2) {  double("player2", hand: []) }
+    it "initial deal deals 5 cards to each player" do
+      deck.deal(5, player1, player2)
+      expect(deck.deck.length).to eq(42)
+      expect(player1.hand.length).to eq(5)
+      expect(player2.hand.length).to eq(5)
+    end
+  end
 end
